@@ -7,14 +7,12 @@ function solution(numbers) {
     //같은 위치의 인덱스끼리는 연산이 이루어지지 않게 해야함
     
     let result = [];
-    let count = 1;
     for(let i = 0; i < numbers.length; i++) {
-        for (let j = count; j < numbers.length; j++) {
+        for (let j = i + 1; j < numbers.length; j++) {
             if (!(result.includes(numbers[i] + numbers[j]))) {
                 result.push(numbers[i] + numbers[j]);
             }
         }
-        count = count + 1;
     }
     return result.sort((a,b)=>a-b);
 }
