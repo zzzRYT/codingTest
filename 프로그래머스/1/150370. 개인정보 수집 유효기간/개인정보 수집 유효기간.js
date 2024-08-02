@@ -6,7 +6,6 @@ function solution(today, terms, privacies) {
         const destroy = termsDate(obj[date[1]], date[0]);
         destroyDate.push(destroy);
     })
-    console.log(destroyDate);
     return findDestroyDate(today, destroyDate);
 }
 
