@@ -7,11 +7,11 @@ const input = fs
   .map(Number);
 
 function solution(numbers) {
-  const sameRest = {};
+  const sameRest = new Set();
   for (let i = 0; i < numbers.length; i++) {
-    sameRest[numbers[i] % 42] = 1;
+    sameRest.add(numbers[i] % 42);
   }
-  console.log(Object.keys(sameRest).length);
+  console.log(sameRest.size);
 }
 
 solution(input);
