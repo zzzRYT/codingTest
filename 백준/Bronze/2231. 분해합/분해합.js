@@ -3,7 +3,8 @@ const filePath = process.platform === "linux" ? "/dev/stdin" : "example.txt";
 let input = fs.readFileSync(filePath).toString();
 
 function solution(num) {
-  for (let i = 1; i <= num; i++) {
+  let length = 9 * String(num).length;
+  for (let i = num - length; i <= num; i++) {
     const temp = String(i)
       .split("")
       .reduce((acc, cur) => Number(acc) + Number(cur));
