@@ -6,12 +6,8 @@ let [count, ...input] = fs
   .trim()
   .split("\n");
 
-const arr = input.map((ele) =>
-  ele
-    .trim()
-    .split(" ")
-    .map((v) => Number(v))
-);
+let result = "";
+const arr = input.map((ele) => ele.trim().split(" ").map(Number));
 
 arr.sort((a, b) => {
   if (a[0] === b[0]) {
@@ -21,5 +17,7 @@ arr.sort((a, b) => {
 });
 
 for (let i = 0; i < arr.length; i++) {
-  console.log(arr[i][0], arr[i][1]);
+  result += arr[i][0] + " " + arr[i][1] + "\n";
 }
+
+console.log(result);
