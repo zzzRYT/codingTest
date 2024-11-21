@@ -20,4 +20,6 @@ arr.sort((a, b) => {
   return a[0] - b[0];
 });
 
-arr.map((ele) => console.log(ele.join(" ")));
+for (let i = 0; i < arr.length; i++) {
+  console.log(arr[i][0], arr[i][1]);
+}
