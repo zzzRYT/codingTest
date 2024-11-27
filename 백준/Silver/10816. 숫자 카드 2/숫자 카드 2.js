@@ -1,31 +1,24 @@
 const fs = require("fs");
 const filePath = process.platform === "linux" ? "/dev/stdin" : "example.txt";
-let input = fs
-  .readFileSync(filePath, "utf8")
-  .trim()
-  .split("\n")
-  .map((v) => v.split(" "));
+let input = fs.readFileSync(filePath, "utf8").trim().split("\n");
 
-const N = input[0][0];
-const NList = input[1];
-const M = input[2][0];
-const MList = input[3];
+const n = Number(input[0]);
+const NList = input[1].split(" ").map(Number);
+let cardMap = new Map();
+const MList = input[3].split(" ").map(Number);
 
-const obj = {};
-for (let i = 0; i < N; i++) {
-  if (obj[NList[i]]) {
-    obj[NList[i]] += 1;
-  } else {
-    obj[NList[i]] = 1;
-  }
+for (let i = 0; i < NList.length; i++) {
+  if (cardMap.has(NList[i])) cardMap.set(NList[i], cardMap.get(NList[i]) + 1);
+  else cardMap.set(NList[i], 1);
 }
 
+const m = Number(input[2]);
 let result = [];
-for (let i = 0; i < M; i++) {
-  if (!obj[MList[i]]) {
-    result.push(0);
+for (let i = 0; i < MList.length; i++) {
+  if (cardMap.has(MList[i])) {
+    result.push(cardMap.get(MList[i]));
   } else {
-    result.push(obj[MList[i]]);
+    result.push(0);
   }
 }
 
