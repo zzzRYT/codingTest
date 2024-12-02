@@ -5,8 +5,6 @@ let input = fs
   .toString()
   .trim()
   .split("\n")
-  .map(Number);
-
 input.shift();
 
-console.log(input[0]*input[1]);
+console.log((BigInt(input[0])*BigInt(input[1])).toString());
