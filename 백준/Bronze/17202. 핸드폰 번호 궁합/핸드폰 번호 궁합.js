@@ -13,8 +13,6 @@ const combinePhone = combineNum(phoneNum1, phoneNum2);
 const ans = compatibility(combinePhone);
 console.log(ans.join(""));
 
-const a = 12;
-const t = a.toString().split("");
 function combineNum(pNum1, pNum2) {
   const newArr = [];
   for (let i = 0; i < pNum1.length; i++) {
@@ -30,14 +28,9 @@ function compatibility(arr) {
     return arr;
   }
   for (let i = 0; i < arr.length; i++) {
-    const temp = changeString(arr[i], arr[i + 1]);
+    const temp = (arr[i] + arr[i + 1]) % 10;
     newArr.push(temp);
   }
   newArr.pop();
   return compatibility(newArr);
-}
-
-function changeString(num1, num2) {
-  const temp = (num1 + num2).toString().split("");
-  return Number(temp[temp.length - 1]);
 }
