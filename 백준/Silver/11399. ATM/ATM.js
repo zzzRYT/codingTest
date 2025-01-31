@@ -13,13 +13,11 @@ const orders = input
   .map(Number)
   .sort((a, b) => a - b);
 
-const ans = [];
-for (let i = 0; i < count; i++) {
-  temp = 0;
-  for (let j = 0; j <= i; j++) {
-    temp += orders[j];
-  }
-  ans.push(temp);
+let sum = 0;
+let ans = 0;
+for (let i of orders) {
+  sum += i;
+  ans += sum;
 }
 
-console.log(ans.reduce((acc, cur) => acc + cur));
+console.log(ans);
