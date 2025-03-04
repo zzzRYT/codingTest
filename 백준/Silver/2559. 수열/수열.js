@@ -8,15 +8,17 @@ let input = require("fs")
 
 const [N, K] = input.shift().split(" ").map(Number);
 const arr = input.shift().split(" ").map(Number);
-const count = N - (K - 1);
-const S = new Array(count).fill(0);
+let sum = 0;
+const ans = [];
 
-for (let i = 0; i < count; i++) {
-  let sum = 0;
-  for (let j = i; j < i + K; j++) {
-    sum += arr[j];
-  }
-  S[i] = sum;
+for (let i = 0; i < K; i++) {
+  sum += arr[i];
+}
+ans.push(sum);
+
+for (let i = K; i < N; i++) {
+  sum = sum - arr[i - K] + arr[i];
+  ans.push(sum);
 }
 
-console.log(Math.max(...S));
+console.log(Math.max(...ans));
