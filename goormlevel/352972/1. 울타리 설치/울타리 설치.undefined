@@ -1,0 +1,14 @@
+// Run by Node.js
+const readline = require('readline');
+
+(async () => {
+	let rl = readline.createInterface({ input: process.stdin });
+	
+	for await (const line of rl) {
+		let m = Math.sqrt(+line);
+		console.log(m * 4)
+		rl.close();
+	}
+	
+	process.exit();
+})();
